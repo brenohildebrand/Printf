@@ -6,37 +6,39 @@
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/07 15:30:27 by bhildebr          #+#    #+#              #
-#    Updated: 2023/09/09 14:11:35 by bhildebr         ###   ########.fr        #
+#    Updated: 2023/09/11 16:24:55 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# IMPORTANT
+#	change makefile to compile the Libft first and then use its libft.a output
+#	to compile the printf lib.
+
 NAME     := printf.a
-TESTNAME := test
 
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror -MMD -MP
 CTESTFLAGS := -MMD -MP
 
-INCLUDES = ./includes/printf.h
+INCLUDES = ./includes/
 
-SOURCES = ./source/printf.c
-OBJECTS = ./printf.o
-DEPENDS = ./printf.d
-TESTS   = ./tests/main.c
+SOURCES = ./source/buffer.c ./source/printf.c
+OBJECTS = ./buffer.o ./printf.o
+DEPENDS = ./buffer.d ./printf.d
+
+TEST = ./tests/test00.c
 
 all: $(NAME)
 
+$(NAME):
+	$(CC) $(CFLAGS) $(SOURCES) -c
+	ar rcs $(NAME) $(OBJECTS)
+
+test: $(NAME)
+	gcc $(TEST) -o test -L. -l:printf.a
+
 run: test
 	@./test
-
-test:
-	$(CC) $(CTESTFLAGS) $(SOURCES) -c -I$(INCLUDES)
-	ar rcs $(NAME) $(OBJECTS)
-	gcc $(TESTS) -o $(TESTNAME) -L . -l:printf.a
-
-$(NAME):
-	$(CC) $(CFLAGS) $(SOURCES) -c -I$(INCLUDES)
-	ar rcs $(NAME) $(OBJECTS)
 
 clean:
 	rm -f $(OBJECTS) $(DEPENDS)
