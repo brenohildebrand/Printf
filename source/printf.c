@@ -6,25 +6,18 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:14:38 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/12 01:50:08 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:35:35 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../dependencies/Libft/libft.h"
+
+#include "printf.h"
 #include "buffer.h"
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
-
-typedef struct s_conversion_specification
-{
-	int		flags;
-	int		precision;
-	int		minimum_field_width;
-	int		length_modifier;
-	char	conversion_specifier;
-}	t_conversion_specification;
 
 /**
  * %
@@ -48,120 +41,83 @@ typedef struct s_conversion_specification
 */
 
 static int	parse_conversion_specification(
-	char *formatted_string,
+	const char *formatted_string,
 	int *i,
 	t_conversion_specification *specs
 ){
 	specs->conversion_specifier = formatted_string[++(*i)];
-}
-
-static int	add_c_conversion_specification_to_buffer(
-	t_conversion_specification *specs,
-	va_list *args
-){
-	int	arg;
-		
-	arg = (char)va_arg(args, int);
-	if (add_character_to_buffer(buffer, arg) == ERROR)
-		return (ERROR);
 	return (SUCCESS);
-}
-
-static int	add_s_conversion_specification_to_buffer(
-	t_conversion_specification *specs,
-	va_list *args
-){
-	char	*arg;
-		
-	arg = va_arg(args, char *);
-	while (*arg)
-	{
-		if (add_character_to_buffer(buffer, *arg) == ERROR)
-			return (ERROR);
-		arg++;
-	}
-	return (SUCCESS);
-}
-
-static int	add_p_conversion_specification_to_buffer(
-	t_conversion_specification *specs,
-	va_list *args
-){
-	void	*arg;
-	char	*string;
-
-	arg = va_arg(args, void *);
-	string = ft_itoa_base((int)arg, "0123456789abcdef");
-	if (string == NULL)
-		return (ERROR);
-	while (*string)
-	{
-		if (add_character_to_buffer(buffer, *string) == ERROR)
-			return (ERROR);
-		string++;
-	}
-	free(string);
-	return (SUCCESS);
-}
-
-static int	add_d_conversion_specification_to_buffer(
-	t_conversion_specification *specs,
-	va_list *args
-){
-	
 }
 
 static int	add_conversion_specification_to_buffer(
-	t_conversion_specification *specs, 
-	va_list *args
+	t_buffer *buffer,
+	va_list *args,
+	t_conversion_specification *specs
 ){
 	if (specs->conversion_specifier == 'c')
-		return (add_c_conversion_specification_to_buffer(specs, args));
+		return (add_c_conversion_specification_to_buffer(buffer, args, specs));
 	else if (specs->conversion_specifier == 's')
-		return (add_s_conversion_specification_to_buffer(specs, args));
+		return (add_s_conversion_specification_to_buffer(buffer, args, specs));
 	else if (specs->conversion_specifier == 'p')
-		return (add_p_conversion_specification_to_buffer(specs, args));
+		return (add_p_conversion_specification_to_buffer(buffer, args, specs));
 	else if (specs->conversion_specifier == 'd')
-		return (add_p_conversion_specification_to_buffer(specs, args));
+		return (add_p_conversion_specification_to_buffer(buffer, args, specs));
+	else if (specs->conversion_specifier == 'i')
+		return (add_i_conversion_specification_to_buffer(buffer, args, specs));
+	else if (specs->conversion_specifier == 'u')
+		return (add_u_conversion_specification_to_buffer(buffer, args, specs));
+	else if (specs->conversion_specifier == 'x')
+		return (add_x_conversion_specification_to_buffer(buffer, args, specs));
+	else if (specs->conversion_specifier == 'X')
+		return (add_X_conversion_specification_to_buffer(buffer, args, specs));
+	else if (specs->conversion_specifier == '%')
+		return (add_percentage_conversion_specification_to_buffer(buffer, args, specs));
+	else
+		return (ERROR);
 }
 
-int ft_printf(const char *formatted_string, ...)
-{
-	va_list		args;
-	t_buffer	*buffer;
-	int			i;
-	
-	va_start(args, formatted_string);
-	if (formatted_string == NULL)
-		return (ERROR);
-	if (malloc_buffer(&buffer) == ERROR)
-		return (ERROR);
+static int parse_formatted_string(
+	const char *formatted_string,
+	t_buffer *buffer,
+	va_list *args
+){
+	t_conversion_specification	specs;
+	int							i;
+
 	i = 0;
 	while(formatted_string[i])
 	{
 		if (formatted_string[i] == '%')
 		{
-			t_conversion_specification specs;
 			if (parse_conversion_specification(formatted_string, &i, &specs) == ERROR)
-			{
-				free_buffer(buffer);
 				return (ERROR);
-			}
-			if (add_conversion_specification_to_buffer(&specs, &args) == ERROR)
-			{
-				free_buffer(buffer);
+			if (add_conversion_specification_to_buffer(buffer, args, &specs) == ERROR)
 				return (ERROR);
-			}
 		}
 		else
 		{
 			if (add_character_to_buffer(buffer, formatted_string[i]) == ERROR)
-			{
-				free_buffer(buffer);
 				return (ERROR);
-			}
 		}
 		i++;
+	}
+	return (SUCCESS);
+}
+
+int ft_printf(const char *formatted_string, ...)
+{
+	t_buffer	*buffer;
+	va_list		args;
+	
+	if (formatted_string == NULL)
+		return (ERROR);
+	if (malloc_buffer(&buffer) == ERROR)
+		return (ERROR);
+	va_start(args, formatted_string);
+	if (parse_formatted_string(formatted_string, buffer, &args) == ERROR)
+	{
+		free_buffer(buffer);
+		return (ERROR);
 	}
 	va_end(args);
 	print_buffer(buffer);

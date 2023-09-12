@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:16:09 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/11 20:42:59 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:30:04 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,17 @@ int	add_character_to_buffer(t_buffer *buffer, char character)
 			return (ERROR);
 	}
 	buffer->content[buffer->current_length++] = character;
+	return (SUCCESS);
+}
+
+int	add_string_to_buffer(t_buffer *buffer, char *string)
+{
+	while (*string)
+	{
+		if (add_character_to_buffer(buffer, *string) == ERROR)
+			return (ERROR);
+		string++;
+	}
 	return (SUCCESS);
 }
 
