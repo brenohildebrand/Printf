@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:14:38 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/12 14:35:35 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:14:54 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,61 @@ static int	parse_conversion_specification(
 	int *i,
 	t_conversion_specification *specs
 ){
-	specs->conversion_specifier = formatted_string[++(*i)];
+	char	current_character;
+
+	// go through flags
+	specs->flags = 0;
+	while (1)
+	{
+		current_character = formatted_string[++(*i)];
+		if (current_character == FLAGS[0] /* && ainda nn ta setado */)
+			specs->flags |= 1 << 0;
+		else if (current_character == FLAGS[1] /* && ainda nn ta setado */)
+			specs->flags |= 1 << 1;
+		else if (current_character == FLAGS[2] /* && ainda nn ta setado */)
+			specs->flags |= 1 << 2;
+		else if (current_character == FLAGS[3] /* && ainda nn ta setado */)
+			specs->flags |= 1 << 3;
+		else if (current_character == FLAGS[4] /* && ainda nn ta setado */)
+			specs->flags |= 1 << 4;
+		else
+			break;
+	}
+
+	// check for optional minimum field
+	specs->minimum_field_width = 0;
+	current_character = formatted_string[++(*i)];
+	if (ft_isdigit(current_character) && current_character != '0')
+	{
+		while(ft_isdigit(current_character))
+		{
+			specs->minimum_field_width *= 10;
+			specs->minimum_field_width += (int)(current_character - '0');
+			current_character = formatted_string[++(*i)];
+		}
+	}
+	
+	// check for optional precision
+	specs->precision = 0;
+	if (current_character == '.')
+	{
+		current_character = formatted_string[++(*i)];
+		while(ft_isdigit(current_character))
+		{
+			specs->precision *= 10;
+			specs->precision += (int)(current_character - '0');
+			current_character = formatted_string[++(*i)];
+		}
+	}
+
+	// don't check for optional length modifier
+
+	// check for conversion specifier
+	if (ft_strchr(CONVERSION_SPECIFIERS, current_character) == -1)
+		return (ERROR);
+	else
+		specs->conversion_specifier = current_character;
+
 	return (SUCCESS);
 }
 
@@ -69,7 +123,7 @@ static int	add_conversion_specification_to_buffer(
 	else if (specs->conversion_specifier == 'x')
 		return (add_x_conversion_specification_to_buffer(buffer, args, specs));
 	else if (specs->conversion_specifier == 'X')
-		return (add_X_conversion_specification_to_buffer(buffer, args, specs));
+		return (add_upper_x_conversion_specification_to_buffer(buffer, args, specs));
 	else if (specs->conversion_specifier == '%')
 		return (add_percentage_conversion_specification_to_buffer(buffer, args, specs));
 	else

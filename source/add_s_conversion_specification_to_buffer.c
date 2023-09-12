@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:54:23 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/12 13:54:42 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/12 16:36:59 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	add_s_conversion_specification_to_buffer(
 	t_conversion_specification *specs
 ){
 	char	*arg;
-		
+
 	arg = va_arg(*args, char *);
 	while (*arg)
 	{

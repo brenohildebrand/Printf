@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:51:17 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/12 14:31:16 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:13:17 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@
 # define HEX_LOWERCASE_BASE "0123456789abcdef"
 # define HEX_UPPERCASE_BASE "0123456789ABCDEF"
 
-# ifndef NULL
-#  define NULL (void*)0
-# endif
+# define FLAGS "#0- +"
+# define CONVERSION_SPECIFIERS "cspdiuxX%"
 
 typedef struct s_conversion_specification
 {
@@ -74,7 +73,7 @@ int	add_x_conversion_specification_to_buffer(
 	va_list *args,
 	t_conversion_specification *specs
 );
-int	add_X_conversion_specification_to_buffer(
+int	add_upper_x_conversion_specification_to_buffer(
 	t_buffer *buffer,
 	va_list *args,
 	t_conversion_specification *specs
