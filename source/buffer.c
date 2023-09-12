@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:16:09 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/11 17:22:43 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/11 20:42:59 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int	malloc_buffer(t_buffer **buffer_address)
 	return (SUCCESS);
 }
 
-int	realloc_buffer_content(t_buffer *buffer, unsigned long original_length, unsigned long new_length)
+int	realloc_buffer_content(\
+t_buffer *buffer, \
+unsigned long original_length, \
+unsigned long new_length)
 {
 	char			*new_content;
 	unsigned long	i;
@@ -36,7 +39,7 @@ int	realloc_buffer_content(t_buffer *buffer, unsigned long original_length, unsi
 		return (ERROR);
 	i = 0;
 	while (i < original_length)
-	{	
+	{
 		new_content[i] = buffer->content[i];
 		i++;
 	}
@@ -57,7 +60,10 @@ int	add_character_to_buffer(t_buffer *buffer, char character)
 {
 	if (buffer->current_length + 1 > buffer->max_length)
 	{
-		if (realloc_buffer_content(buffer, buffer->max_length, buffer->max_length * 2) == ERROR)
+		if (realloc_buffer_content(\
+				buffer, \
+				buffer->max_length, \
+				buffer->max_length * 2) == ERROR)
 			return (ERROR);
 	}
 	buffer->content[buffer->current_length++] = character;
