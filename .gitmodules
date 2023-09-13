@@ -1,3 +1,0 @@
-[submodule "dependencies/Libft"]
-	path = dependencies/Libft
-	url = git@github.com:brenohildebrand/Libft.git

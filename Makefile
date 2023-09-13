@@ -6,47 +6,37 @@
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/07 15:30:27 by bhildebr          #+#    #+#              #
-#    Updated: 2023/09/12 16:43:29 by bhildebr         ###   ########.fr        #
+#    Updated: 2023/09/13 14:34:44 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# IMPORTANT
-#	change makefile to compile the Libft first and then use its libft.a output
-#	to compile the printf lib.
-
-NAME := printf.a
-
-SUBDIRS = ./dependencies/Libft
+NAME := libftprintf.a
 
 CC := gcc
 CFLAGS := -MMD -MP
 
-SOURCES = ./source/*.c
-HEADERS = ./source/*.h
+SOURCES = ./libft/*.c ./printf/*.c ./buffer/*.c ./string/*.c
 OBJECTS = ./*.o
 DEPENDS = ./*.d
 
 all: $(NAME) 
 
-$(NAME): $(SUBDIRS)
-	@cp ./dependencies/Libft/*.o .
-	@$(CC) $(CFLAGS) $(SOURCES) -c
-	@ar rcs $(NAME) $(OBJECTS)
-
-$(SUBDIRS):
-	@$(MAKE) -C $@ -s
+$(NAME):
+	$(CC) $(CFLAGS) $(SOURCES) -c
+	ar rcs $(NAME) $(OBJECTS)
 
 clean:
-	rm -f $(OBJECTS) $(DEPENDS)
+	rm -f $(OBJECTS)
+	rm -f $(DEPENDS)
 
 fclean: clean
 	rm -f $(NAME)
+	@rm -f ./test
 
 re: fclean all
 
 test: $(NAME) 
-	@$(CC) $(CFLAGS) ./tests/*.c -o test -L. -l:printf.a
+	@$(CC) $(CFLAGS) ./tests/printf.test.c -o test -L. -l:libftprintf.a
 	@./test
-	@rm -f ./test
 
-.PHONY: all clean fclean re test $(SUBDIRS)
+.PHONY: all clean fclean re test
