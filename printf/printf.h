@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:51:17 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/13 20:28:48 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/14 04:24:45 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdarg.h>
 # include <stdarg.h>
 
 # include <stdio.h> 
@@ -46,55 +45,46 @@ typedef struct s_conversion_specification
 	char	conversion_specifier;
 }	t_conversion_specification;
 
-int	add_c_conversion_specification_to_buffer(
-	t_buffer *buffer,
-	va_list *args,
-	t_conversion_specification *specs
-);
 int	add_conversion_specification_to_buffer(
 	t_buffer *buffer,
 	va_list *args,
 	t_conversion_specification *specs
 );
-int	add_d_conversion_specification_to_buffer(
-	t_buffer *buffer,
-	va_list *args,
-	t_conversion_specification *specs
+int	convert_c(
+	va_list	*args,
+	t_buffer *conversion_buffer
 );
-int	add_i_conversion_specification_to_buffer(
-	t_buffer *buffer,
+int convert_d(
 	va_list *args,
-	t_conversion_specification *specs
+	t_buffer *conversion_buffer
 );
-int	add_p_conversion_specification_to_buffer(
-	t_buffer *buffer,
+int convert_i(
 	va_list *args,
-	t_conversion_specification *specs
+	t_buffer *conversion_buffer
 );
-int	add_percentage_conversion_specification_to_buffer(
-	t_buffer *buffer,
+int	convert_p(
 	va_list *args,
-	t_conversion_specification *specs
+	t_buffer *conversion_buffer
 );
-int	add_s_conversion_specification_to_buffer(
-	t_buffer *buffer,
-	va_list *args,
-	t_conversion_specification *specs
+int	convert_percentage(
+	va_list	*args,
+	t_buffer *conversion_buffer
 );
-int	add_u_conversion_specification_to_buffer(
-	t_buffer *buffer,
+int	convert_s(
 	va_list *args,
-	t_conversion_specification *specs
+	t_buffer *conversion_buffer
 );
-int	add_x_conversion_specification_to_buffer(
-	t_buffer *buffer,
+int convert_u(
 	va_list *args,
-	t_conversion_specification *specs
+	t_buffer *conversion_buffer
 );
-int	add_upper_x_conversion_specification_to_buffer(
-	t_buffer *buffer,
+int convert_upper_x(
 	va_list *args,
-	t_conversion_specification *specs
+	t_buffer *conversion_buffer
+);
+int convert_x(
+	va_list *args,
+	t_buffer *conversion_buffer
 );
 int	parse_conversion_specification(
 	const char *formatted_string,
@@ -105,6 +95,36 @@ int	parse_formatted_string(
 	const char *formatted_string,
 	t_buffer *buffer,
 	va_list *args
+);
+int	process_conversion_specifier(
+	t_conversion_specification *specs,
+	va_list	*args,
+	t_buffer *conversion_buffer
+);
+int	process_hash_flag(
+	t_conversion_specification *specs,
+	t_buffer *conversion_buffer
+);
+int	process_minimum_field_width(
+	t_conversion_specification *specs,
+	t_buffer *conversion_buffer
+);
+int	process_precision(
+	t_conversion_specification *specs,
+	t_buffer *conversion_buffer
+);
+int	process_sign_flag(
+	t_conversion_specification *specs,
+	t_buffer *conversion_buffer
+);
+int	process_space_flag(
+	t_conversion_specification *specs,
+	t_buffer *conversion_buffer
+);
+int	process_specs(
+	va_list *args,
+	t_conversion_specification *specs,
+	t_buffer *conversion_buffer
 );
 
 #endif

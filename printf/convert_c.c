@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_conversion_specification_to_buffer.c           :+:      :+:    :+:   */
+/*   convert_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 23:13:47 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 04:16:28 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/09/14 00:36:48 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/09/14 05:10:01 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	add_conversion_specification_to_buffer(
-	t_buffer *buffer,
-	va_list *args,
-	t_conversion_specification *specs
+int	convert_c(
+	va_list	*args,
+	t_buffer *conversion_buffer
 ){
-	t_buffer	*conversion_buffer;
-
-	if (malloc_buffer(&conversion_buffer) == ERROR)
-	{
+	unsigned char	arg;
+	
+	arg = (unsigned char)va_arg(*args, int);
+	if (add_unsigned_character_to_buffer(conversion_buffer, arg) == ERROR)
 		return (ERROR);
-	}
-	if (process_specs(args, specs, conversion_buffer) == ERROR)
-	{
-		free_buffer(conversion_buffer);
-		return (ERROR);
-	}
-	if (add_buffer_to_buffer(buffer, conversion_buffer) == ERROR)
-	{
-		return (ERROR);
-	}
-	free_buffer(conversion_buffer);
 	return (SUCCESS);
 }

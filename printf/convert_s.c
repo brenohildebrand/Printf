@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_conversion_specification_to_buffer.c           :+:      :+:    :+:   */
+/*   convert_s.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 23:13:47 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 04:16:28 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/09/14 00:47:07 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/09/14 05:11:19 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	add_conversion_specification_to_buffer(
-	t_buffer *buffer,
+int	convert_s(
 	va_list *args,
-	t_conversion_specification *specs
+	t_buffer *conversion_buffer
 ){
-	t_buffer	*conversion_buffer;
+	char	*arg;
 
-	if (malloc_buffer(&conversion_buffer) == ERROR)
+	arg = va_arg(*args, char *);
+	if (arg == 0)
 	{
-		return (ERROR);
+		if (add_cstring_to_buffer(conversion_buffer, "(null)") == ERROR)
+			return (ERROR);
 	}
-	if (process_specs(args, specs, conversion_buffer) == ERROR)
+	else
 	{
-		free_buffer(conversion_buffer);
-		return (ERROR);
+		if (add_cstring_to_buffer(conversion_buffer, arg) == ERROR)
+			return (ERROR);
 	}
-	if (add_buffer_to_buffer(buffer, conversion_buffer) == ERROR)
-	{
-		return (ERROR);
-	}
-	free_buffer(conversion_buffer);
 	return (SUCCESS);
 }

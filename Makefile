@@ -6,7 +6,7 @@
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/07 15:30:27 by bhildebr          #+#    #+#              #
-#    Updated: 2023/09/13 14:34:44 by bhildebr         ###   ########.fr        #
+#    Updated: 2023/09/14 05:12:55 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME := libftprintf.a
 CC := gcc
 CFLAGS := -MMD -MP
 
-SOURCES = ./libft/*.c ./printf/*.c ./buffer/*.c ./string/*.c
+SOURCES = ./libft/*.c ./printf/*.c ./buffer/*.c
 OBJECTS = ./*.o
 DEPENDS = ./*.d
 

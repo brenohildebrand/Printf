@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_conversion_specification_to_buffer.c           :+:      :+:    :+:   */
+/*   convert_d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 23:13:47 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 04:16:28 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/09/14 02:50:16 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/09/14 05:09:04 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	add_conversion_specification_to_buffer(
-	t_buffer *buffer,
+int convert_d(
 	va_list *args,
-	t_conversion_specification *specs
+	t_buffer *conversion_buffer
 ){
-	t_buffer	*conversion_buffer;
+	int		arg;
+	char	*cstring;
 
-	if (malloc_buffer(&conversion_buffer) == ERROR)
-	{
+	arg = va_arg(*args, int);
+	cstring = ft_int_itoa_base(arg, DEC_BASE);
+	if (cstring == NULL)
 		return (ERROR);
-	}
-	if (process_specs(args, specs, conversion_buffer) == ERROR)
-	{
-		free_buffer(conversion_buffer);
+	if (add_cstring_to_buffer(conversion_buffer, cstring) == ERROR)
 		return (ERROR);
-	}
-	if (add_buffer_to_buffer(buffer, conversion_buffer) == ERROR)
-	{
-		return (ERROR);
-	}
-	free_buffer(conversion_buffer);
+	free(cstring);
 	return (SUCCESS);
 }
