@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 00:08:08 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/13 18:04:11 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/14 06:29:45 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static char	*handle_zero(char *base)
 
 static size_t	get_string_len(int value, char *base)
 {
-	int	_value;
-	size_t			base_len;
-	size_t			string_len;
+	int		_value;
+	size_t	base_len;
+	size_t	string_len;
 
 	base_len = ft_strlen(base);
 	string_len = 0;
@@ -56,8 +56,8 @@ static char	*get_string(
 	char *string, 
 	size_t string_len
 ){
-	int	_value;
-	size_t			base_len;
+	int		_value;
+	size_t	base_len;
 
 	base_len = ft_strlen(base);
 	string[string_len] = '\0';
@@ -88,10 +88,14 @@ char	*ft_int_itoa_base(int value, char *base)
 	int		_value;
 	size_t	string_len;
 	char	*string;
-	
+
 	if (value == -2147483648 && ft_strncmp(base, "0123456789", 10) == 0)
 		return (ft_strdup("-2147483648"));
-	else if (value == -2147483648 && (!ft_strncmp(base, "0123456789abcdef", 16) || !ft_strncmp(base, "0123456789ABCDEF", 16)))
+	else if (\
+		value == -2147483648 && \
+		(!ft_strncmp(base, "0123456789abcdef", 16) || \
+		!ft_strncmp(base, "0123456789ABCDEF", 16))
+	)
 		return (ft_strdup("80000000"));
 	if (value == 0)
 		return (handle_zero(base));

@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 04:10:15 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 04:14:13 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/14 06:36:14 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	process_specs(
 	if (process_precision(specs, conversion_buffer) == ERROR)
 		return (ERROR);
 	if (process_hash_flag(specs, conversion_buffer) == ERROR)
-		return (ERROR);	
+		return (ERROR);
 	if (process_space_flag(specs, conversion_buffer) == ERROR)
 		return (ERROR);
 	if (process_sign_flag(specs, conversion_buffer) == ERROR)

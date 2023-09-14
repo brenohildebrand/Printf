@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:11 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 05:10:38 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/14 06:39:19 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	convert_p(
 	}
 	else
 	{
-		cstring = ft_unsigned_long_long_int_itoa_base((unsigned long long int)arg, HEX_LOWERCASE_BASE);
+		cstring = ft_unsigned_long_long_int_itoa_base(\
+			(unsigned long long int)arg, \
+			HEX_LOWERCASE_BASE);
 		if (cstring == NULL)
 			return (ERROR);
 		if (add_cstring_to_buffer(conversion_buffer, "0x") == ERROR)

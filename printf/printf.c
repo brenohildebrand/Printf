@@ -6,19 +6,19 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:14:38 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/13 15:09:06 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/14 06:36:59 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int ft_printf(const char *formatted_string, ...)
+int	ft_printf(const char *formatted_string, ...)
 {
 	// printf("\n\n[DEBUGGING]\n");
 	t_buffer		*buffer;
 	va_list			args;
 	unsigned long	len;
-	
+
 	if (formatted_string == NULL)
 		return (ERROR);
 	if (malloc_buffer(&buffer) == ERROR)

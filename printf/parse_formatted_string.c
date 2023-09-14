@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 23:14:20 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/13 01:55:47 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/14 06:37:26 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	parse_formatted_string(
 	int							i;
 
 	i = 0;
-	while(formatted_string[i])
+	while (formatted_string[i])
 	{
 		if (formatted_string[i] == '%')
 		{

@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 00:08:08 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/13 17:50:04 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/14 06:32:38 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ static char	*get_string(
 	return (string);
 }
 
-char	*ft_unsigned_long_long_int_itoa_base(unsigned long long int value, char *base)
-{
+char	*ft_unsigned_long_long_int_itoa_base(
+	unsigned long long int value, 
+	char *base
+){
 	unsigned long long int	_value;
 	size_t					string_len;
 	char					*string;
-	
+
 	if (value == 0)
 		return (handle_zero(base));
 	string_len = get_string_len(value, base);

@@ -6,13 +6,13 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 02:50:16 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 05:09:24 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/14 06:40:07 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int convert_x(
+int	convert_x(
 	va_list *args,
 	t_buffer *conversion_buffer
 ){
