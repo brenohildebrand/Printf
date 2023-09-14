@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:28:14 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/13 14:56:16 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:41:21 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,11 @@ int	malloc_string(t_string **string_address)
 		return (ERROR);
 	}
 	return (SUCCESS);
+}
+
+int	free_string(t_string *string)
+{
+	free(string->content);
+	free(string);
+	return (SUCCESS);	
 }

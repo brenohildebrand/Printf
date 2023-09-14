@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:51:17 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/12 23:47:15 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/13 20:28:48 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@
 
 # define FLAGS "#0- +"
 # define CONVERSION_SPECIFIERS "cspdiuxX%"
+
+# define HASH_IS_ON(flags) ((flags & (1 << 0)) != 0)
+# define ZERO_IS_ON(flags) ((flags & (1 << 1)) != 0)
+# define DASH_IS_ON(flags) ((flags & (1 << 2)) != 0)
+# define SPACE_IS_ON(flags) ((flags & (1 << 3)) != 0)
+# define SIGN_IS_ON(flags) ((flags & (1 << 4)) != 0)
 
 typedef struct s_conversion_specification
 {
