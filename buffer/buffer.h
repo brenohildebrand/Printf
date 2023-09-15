@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:15:10 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 06:27:30 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:41:25 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ int	realloc_buffer_content(
 int	add_buffer_to_buffer(t_buffer *buffer, t_buffer *source_buffer);
 int	free_buffer(t_buffer *buffer);
 int	add_character_to_buffer(t_buffer *buffer, char character);
+int	prepend_cstring_to_buffer(t_buffer *buffer, char *string);
+int	append_cstring_to_buffer(t_buffer *buffer, char *string);
+int	append_character_to_buffer(t_buffer *buffer, char character);
+int	prepend_character_to_buffer(t_buffer *buffer, char character);
 int	add_cstring_to_buffer(t_buffer *buffer, char *string);
 int	add_unsigned_character_to_buffer(t_buffer *buffer, unsigned char character);
 int	print_buffer(t_buffer *buffer);

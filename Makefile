@@ -6,7 +6,7 @@
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/07 15:30:27 by bhildebr          #+#    #+#              #
-#    Updated: 2023/09/14 05:12:55 by bhildebr         ###   ########.fr        #
+#    Updated: 2023/09/14 23:29:17 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ OBJECTS = ./*.o
 DEPENDS = ./*.d
 
 all: $(NAME) 
+
+bonus: $(NAME)
 
 $(NAME):
 	$(CC) $(CFLAGS) $(SOURCES) -c
