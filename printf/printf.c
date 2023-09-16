@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:14:38 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/15 14:33:25 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:11:09 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printf(const char *formatted_string, ...)
 {
-	printf("\n\n[DEBUGGING]\n");
+	// printf("\n\n[DEBUGGING]\n");
 	t_buffer		*buffer;
 	va_list			args;
 	unsigned long	len;
@@ -30,13 +30,13 @@ int	ft_printf(const char *formatted_string, ...)
 		return (ERROR);
 	}
 	va_end(args);
-	printf("[DEBUG]\n");
-	printf("[DEBUG] Result:\n");
-	printf("[DEBUG] \t");
-	fflush(stdout);
+	// printf("[DEBUG]\n");
+	// printf("[DEBUG] Result:\n");
+	// printf("[DEBUG] \t");
+	// fflush(stdout);
 	print_buffer(buffer);
 	len = buffer->current_length;
-	printf("\n");
+	// printf("\n");
 	free_buffer(buffer);
 	return (len);
 }

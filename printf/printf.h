@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:51:17 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/16 12:38:11 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:06:34 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,10 @@ int	process_zeros(
 int	process_specs(
 	va_list *args,
 	t_conversion_specification *specs,
+	t_buffer *conversion_buffer
+);
+int	process_alternate_form(
+	t_conversion_specification *specs, 
 	t_buffer *conversion_buffer
 );
 
