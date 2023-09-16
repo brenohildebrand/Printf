@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 02:50:16 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 06:38:00 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/16 12:38:24 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	convert_d(
 	va_list *args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 ){
 	int		arg;
 	char	*cstring;

@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 23:14:20 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 06:37:26 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/15 14:35:02 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	parse_formatted_string(
 		{
 			if (parse_conversion_specification(formatted_string, &i, &specs) == ERROR)
 				return (ERROR);
-			// printf("[DEBUG] Adding the following conversion specification to buffer:\n");
-			// printf("[DEBUG] Specs:\n");
-			// printf("[DEBUG] \tFlags:\t\t\t%i\n", specs.flags);
-			// printf("[DEBUG] \tMinimum Width:\t\t%i\n", specs.minimum_field_width);
-			// printf("[DEBUG] \tPrecision:\t\t%i\n", specs.precision);
-			// printf("[DEBUG] \tConversion Specifier:\t%c\n", specs.conversion_specifier);
+			printf("[DEBUG] Adding the following conversion specification to buffer:\n");
+			printf("[DEBUG] Specs:\n");
+			printf("[DEBUG] \tFlags:\t\t\t%i\n", specs.flags);
+			printf("[DEBUG] \tMinimum Width:\t\t%i\n", specs.minimum_field_width);
+			printf("[DEBUG] \tPrecision:\t\t%i\n", specs.precision);
+			printf("[DEBUG] \tConversion Specifier:\t%c\n", specs.conversion_specifier);
 			if (add_conversion_specification_to_buffer(buffer, args, &specs) == ERROR)
 				return (ERROR);
 		}

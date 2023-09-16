@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:51:17 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 04:24:45 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/16 12:38:11 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,39 +52,48 @@ int	add_conversion_specification_to_buffer(
 );
 int	convert_c(
 	va_list	*args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 );
 int convert_d(
 	va_list *args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 );
 int convert_i(
 	va_list *args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 );
 int	convert_p(
 	va_list *args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 );
 int	convert_percentage(
 	va_list	*args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 );
 int	convert_s(
 	va_list *args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 );
 int convert_u(
 	va_list *args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 );
 int convert_upper_x(
 	va_list *args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 );
 int convert_x(
 	va_list *args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 );
 int	parse_conversion_specification(
 	const char *formatted_string,
@@ -101,24 +110,16 @@ int	process_conversion_specifier(
 	va_list	*args,
 	t_buffer *conversion_buffer
 );
-int	process_hash_flag(
-	t_conversion_specification *specs,
+int	process_signal(
+	t_conversion_specification *specs, 
 	t_buffer *conversion_buffer
 );
-int	process_minimum_field_width(
-	t_conversion_specification *specs,
+int	process_spaces(
+	t_conversion_specification *specs, 
 	t_buffer *conversion_buffer
 );
-int	process_precision(
-	t_conversion_specification *specs,
-	t_buffer *conversion_buffer
-);
-int	process_sign_flag(
-	t_conversion_specification *specs,
-	t_buffer *conversion_buffer
-);
-int	process_space_flag(
-	t_conversion_specification *specs,
+int	process_zeros(
+	t_conversion_specification *specs, 
 	t_buffer *conversion_buffer
 );
 int	process_specs(

@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 23:13:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/13 00:19:18 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/16 12:49:36 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ static int	parse_precision(
 	char	current_character;
 
 	current_character = formatted_string[(*i)];
-	specs->precision = 0;
+	specs->precision = -1;
 	if (current_character == '.')
 	{
+		specs->precision = 0;
 		current_character = formatted_string[++(*i)];
 		while (ft_isdigit(current_character))
 		{
@@ -79,6 +80,7 @@ static int	parse_precision(
 			current_character = formatted_string[++(*i)];
 		}
 	}
+	return (SUCCESS);
 }
 
 static int	parse_conversion_specifier(
@@ -93,6 +95,7 @@ static int	parse_conversion_specifier(
 		return (ERROR);
 	else
 		specs->conversion_specifier = current_character;
+	return (SUCCESS);
 }
 
 int	parse_conversion_specification(

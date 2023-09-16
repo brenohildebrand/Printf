@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:36:48 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 06:37:44 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/16 12:39:18 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	convert_c(
 	va_list	*args,
-	t_buffer *conversion_buffer
+	t_buffer *conversion_buffer,
+	t_conversion_specification *specs
 ){
 	unsigned char	arg;
 
