@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:39:04 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/16 13:37:48 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/16 13:45:38 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	process_spaces(t_conversion_specification *specs, t_buffer *conversion_buffe
 		prepend_character_to_buffer(conversion_buffer, ' ');
 	if (specs->minimum_field_width > conversion_buffer->current_length)
 	{
-		i = specs->minimum_field_width;
+		i = specs->minimum_field_width - conversion_buffer->current_length;
 		if (DASH_IS_ON(specs->flags))
 		{
 			while (i--)
