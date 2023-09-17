@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:47:07 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/16 13:13:11 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:55:29 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	convert_s(
 	t_conversion_specification *specs
 ){
 	char	*arg;
+	char	*substr;
 
 	arg = va_arg(*args, char *);
 	if (arg == 0)
@@ -29,8 +30,10 @@ int	convert_s(
 	{
 		if (specs->precision >= 0)
 		{
-			if (add_cstring_to_buffer(conversion_buffer, ft_substr(arg, 0, specs->precision)) == ERROR)
-				return (ERROR);		
+			substr = ft_substr(arg, 0, specs->precision);
+			if (add_cstring_to_buffer(conversion_buffer, substr) == ERROR)
+				return (ERROR);
+			free(substr);
 		}
 		else
 		{

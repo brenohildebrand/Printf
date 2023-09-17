@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:39:04 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/16 16:03:01 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:02:43 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	process_spaces(t_conversion_specification *specs, t_buffer *conversion_buffe
 	// field width influencia
 	int	i;
 
-	if (SPACE_IS_ON(specs->flags) && conversion_buffer->content[0] != '-' && (specs->conversion_specifier == 'i' || specs->conversion_specifier == 'd'))
+	if (SPACE_IS_ON(specs->flags) && (specs->conversion_specifier == 'i' || specs->conversion_specifier == 'd') && conversion_buffer->current_length > 0 && conversion_buffer->content[0] != '-')
 		prepend_character_to_buffer(conversion_buffer, ' ');
 	if (specs->minimum_field_width > conversion_buffer->current_length)
 	{
