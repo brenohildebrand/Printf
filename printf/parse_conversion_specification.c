@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 23:13:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 01:20:14 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:12:19 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	parse_conversion_specification(
 	if (parse_flags(formatted_string, i, specs) == ERROR)
 		return (ERROR);
 	if (parse_minimum_field_width(formatted_string, i, specs) == ERROR)
-		return (ERROR); 
+		return (ERROR);
 	if (parse_precision(formatted_string, i, specs) == ERROR)
 		return (ERROR);
 	if (parse_conversion_specifier(formatted_string, i, specs) == ERROR)

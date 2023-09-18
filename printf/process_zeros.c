@@ -6,15 +6,15 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:38:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 01:29:33 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:17:54 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
 static int	count_number_of_digits(
-	t_conversion_specification *specs, 
-	t_buffer *conversion_buffer, 
+	t_conversion_specification *specs,
+	t_buffer *conversion_buffer,
 	int *number_of_digits
 ){
 	int	i;
@@ -24,7 +24,7 @@ static int	count_number_of_digits(
 	while (i < conversion_buffer->current_length)
 	{
 		if (
-			specs->conversion_specifier == 'x' || 
+			specs->conversion_specifier == 'x' || \
 			specs->conversion_specifier == 'X')
 			(*number_of_digits)++;
 		else if (ft_isdigit(conversion_buffer->content[i]))
@@ -35,7 +35,7 @@ static int	count_number_of_digits(
 }
 
 static int	count_number_of_characters(
-	t_buffer *conversion_buffer, 
+	t_buffer *conversion_buffer,
 	int *number_of_characters
 ){
 	int	i;
@@ -51,7 +51,7 @@ static int	count_number_of_characters(
 }
 
 static int	add_zeros_to_buffer(
-	t_buffer *conversion_buffer, 
+	t_buffer *conversion_buffer,
 	int number_of_zeros
 ){
 	int		i;
@@ -68,8 +68,8 @@ static int	add_zeros_to_buffer(
 	i = 0;
 	j = 0;
 	if (
-		conversion_buffer->current_length > 0 && 
-		(conversion_buffer->content[i] == '-' || 
+		conversion_buffer->current_length > 0 && \
+		(conversion_buffer->content[i] == '-' || \
 			conversion_buffer->content[i] == '+'))
 		new_content[j++] = conversion_buffer->content[i++];
 	while (number_of_zeros--)
@@ -83,7 +83,7 @@ static int	add_zeros_to_buffer(
 }
 
 int	process_zeros(
-	t_conversion_specification *specs, 
+	t_conversion_specification *specs,
 	t_buffer *conversion_buffer
 ){
 	int	number_of_digits;
@@ -108,11 +108,11 @@ int	process_zeros(
 	else if (ZERO_IS_ON(specs->flags) && !DASH_IS_ON(specs->flags))
 	{
 		if (count_number_of_characters(
-				conversion_buffer, 
+				conversion_buffer,
 				&number_of_characters) == ERROR)
 			return (ERROR);
 		if (add_zeros_to_buffer(
-				conversion_buffer, 
+				conversion_buffer,
 				specs->minimum_field_width - number_of_characters) == ERROR)
 			return (ERROR);
 	}

@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:51:17 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 11:58:18 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:14:34 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,15 +111,15 @@ int	process_conversion_specifier(
 		t_buffer *conversion_buffer
 		);
 int	process_signal(
-		t_conversion_specification *specs, 
+		t_conversion_specification *specs,
 		t_buffer *conversion_buffer
 		);
 int	process_spaces(
-		t_conversion_specification *specs, 
+		t_conversion_specification *specs,
 		t_buffer *conversion_buffer
 		);
 int	process_zeros(
-		t_conversion_specification *specs, 
+		t_conversion_specification *specs,
 		t_buffer *conversion_buffer
 		);
 int	process_specs(
@@ -128,7 +128,7 @@ int	process_specs(
 		t_buffer *conversion_buffer
 		);
 int	process_alternate_form(
-		t_conversion_specification *specs, 
+		t_conversion_specification *specs,
 		t_buffer *conversion_buffer
 		);
 
