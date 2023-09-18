@@ -6,17 +6,17 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:33:16 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 06:25:01 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:57:00 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "buffer.h"
 
-int	realloc_buffer_content(\
-t_buffer *buffer, \
-unsigned long original_length, \
-unsigned long new_length)
-{
+int	realloc_buffer_content(
+	t_buffer *buffer,
+	unsigned long original_length,
+	unsigned long new_length
+){
 	char			*new_content;
 	unsigned long	i;
 

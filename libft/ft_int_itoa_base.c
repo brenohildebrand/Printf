@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 00:08:08 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 06:29:45 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:09:10 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static size_t	get_string_len(int value, char *base)
 static char	*get_string(
 	int value,
 	char *base,
-	char *string, 
+	char *string,
 	size_t string_len
 ){
 	int		_value;

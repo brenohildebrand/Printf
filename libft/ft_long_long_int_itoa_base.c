@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 00:08:08 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 06:30:56 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:08:04 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static size_t	get_string_len(long long int value, char *base)
 static char	*get_string(
 	long long int value,
 	char *base,
-	char *string, 
+	char *string,
 	size_t string_len
 ){
 	long long int	_value;
@@ -90,12 +90,12 @@ char	*ft_long_long_int_itoa_base(long long int value, char *base)
 	char			*string;
 
 	if (\
-		value == (-9223372036854775807L -1L) && \
+		value == (-9223372036854775807L - 1L) && \
 		ft_strncmp(base, "0123456789", 10) == 0 \
 	)
 		return (ft_strdup("–2147483648"));
 	else if (
-		value == (-9223372036854775807L -1L) && \
+		value == (-9223372036854775807L - 1L) && \
 		(!ft_strncmp(base, "0123456789abcdef", 16) || \
 		!ft_strncmp(base, "0123456789ABCDEF", 16))
 	)

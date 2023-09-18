@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:16:23 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/14 06:33:43 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:09:31 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 char			*ft_long_long_int_itoa_base(long long int value, char *base);
 char			*ft_unsigned_long_long_int_itoa_base(
-					unsigned long long int value, 
+					unsigned long long int value,
 					char *base
 					);
 char			*ft_unsigned_int_itoa_base(unsigned int value, char *base);
