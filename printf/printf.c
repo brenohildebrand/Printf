@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:14:38 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 01:22:12 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:15:47 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_printf(const char *formatted_string, ...)
 {
 	t_buffer		*buffer;
 	va_list			args;
-	unsigned long	len;
+	unsigned long	buffer_current_length;
 
 	if (formatted_string == NULL)
 		return (ERROR);
@@ -29,8 +29,8 @@ int	ft_printf(const char *formatted_string, ...)
 		return (ERROR);
 	}
 	va_end(args);
+	buffer_current_length = buffer->current_length;
 	print_buffer(buffer);
-	len = buffer->current_length;
 	free_buffer(buffer);
-	return (len);
+	return (buffer_current_length);
 }

@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 23:13:47 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/15 14:35:53 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:09:36 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	add_conversion_specification_to_buffer(
 	t_conversion_specification *specs
 ){
 	t_buffer	*conversion_buffer;
-
+	
 	if (malloc_buffer(&conversion_buffer) == ERROR)
 	{
 		return (ERROR);

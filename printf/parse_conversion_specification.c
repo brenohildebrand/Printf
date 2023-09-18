@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 23:13:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 15:12:19 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:14:53 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,23 @@ static int	parse_precision(
 	int *i,
 	t_conversion_specification *specs
 ){
-	char	current_character;
-
-	current_character = formatted_string[(*i)];
 	specs->precision = -1;
-	if (current_character == '.')
+	if (formatted_string[(*i)] == '.')
 	{
-		specs->precision = 0;
-		current_character = formatted_string[++(*i)];
-		while (ft_isdigit(current_character))
+		if (formatted_string[++(*i)] == '-')
 		{
-			specs->precision *= 10;
-			specs->precision += (int)(current_character - '0');
-			current_character = formatted_string[++(*i)];
+			while (ft_isdigit(formatted_string[++(*i)])) ;
+			specs->precision = -1;
+		}
+		else
+		{
+			specs->precision = 0;	
+			while (ft_isdigit(formatted_string[(*i)]))
+			{
+				specs->precision *= 10;
+				specs->precision += (int)(formatted_string[(*i)] - '0');
+				(*i)++;
+			}
 		}
 	}
 	return (SUCCESS);
@@ -103,8 +107,6 @@ int	parse_conversion_specification(
 	int *i,
 	t_conversion_specification *specs
 ){
-	char	current_character;
-
 	if (parse_flags(formatted_string, i, specs) == ERROR)
 		return (ERROR);
 	if (parse_minimum_field_width(formatted_string, i, specs) == ERROR)
