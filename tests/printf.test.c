@@ -6,10 +6,9 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:21:02 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/17 01:10:44 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:01:05 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,18 +17,12 @@
 #include <sys/wait.h>
 #include <limits.h>
 
-int ft_printf(const char *formatted_string, ...);
+int	ft_printf(const char *formatted_string, ...);
 
 int	main(void)
-{	
+{
 	int	printf_return;
 	int	ft_printf_return;
-
-	// freopen("./tests/printf.output", "w", stdout);
-	// printf("%c", '0');
-	// freopen("./tests/ft_printf.output", "w", stdout);
-	// ft_printf("%c", '0');
-	// freopen ("/dev/tty", "a", stdout);
 
 	printf("[PRINTF] ");
 	fflush(stdout);
@@ -41,6 +34,5 @@ int	main(void)
 	ft_printf_return = ft_printf(" %#x ", 0); 
 	printf("\n");
 	printf("[FT_PRINTF] %i\n", ft_printf_return);
-
 	return (0);
 }

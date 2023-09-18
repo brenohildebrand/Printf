@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 23:13:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/16 12:49:36 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 01:20:14 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ static int	parse_flags(
 	while (1)
 	{
 		current_character = formatted_string[++(*i)];
-		if (current_character == FLAGS[0] /* && ainda nn ta setado */)
+		if (current_character == FLAGS[0])
 			specs->flags |= 1 << 0;
-		else if (current_character == FLAGS[1] /* && ainda nn ta setado */)
+		else if (current_character == FLAGS[1])
 			specs->flags |= 1 << 1;
-		else if (current_character == FLAGS[2] /* && ainda nn ta setado */)
+		else if (current_character == FLAGS[2])
 			specs->flags |= 1 << 2;
-		else if (current_character == FLAGS[3] /* && ainda nn ta setado */)
+		else if (current_character == FLAGS[3])
 			specs->flags |= 1 << 3;
-		else if (current_character == FLAGS[4] /* && ainda nn ta setado */)
+		else if (current_character == FLAGS[4])
 			specs->flags |= 1 << 4;
 		else
 			break ;

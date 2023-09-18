@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 04:10:15 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/16 15:54:15 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 01:26:36 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,14 @@ int	process_specs(
 	t_conversion_specification *specs,
 	t_buffer *conversion_buffer
 ){
-	// outra tentativa
-	// a gente soh quer o nosso valor
 	if (process_conversion_specifier(specs, args, conversion_buffer) == ERROR)
 		return (ERROR);
-	// quer saber se vai ter sinal ou nao
 	if (process_signal(specs, conversion_buffer) == ERROR)
 		return (ERROR);
-	// quer saber se eh pra preencher de 0 antes dele ou nao
 	if (process_zeros(specs, conversion_buffer) == ERROR)
 		return (ERROR);
 	if (process_alternate_form(specs, conversion_buffer) == ERROR)
 		return (ERROR);
-	// e quer saber se eh pra por espaco ou nao
 	if (process_spaces(specs, conversion_buffer) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
