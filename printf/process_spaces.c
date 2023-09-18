@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:39:04 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 15:16:55 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:38:47 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	process_spaces(
 	int	i;
 
 	if (
-		SPACE_IS_ON(specs->flags) && \
+		((specs->flags & (1 << 3)) != 0) && \
 		(specs->conversion_specifier == 'i' || \
 			specs->conversion_specifier == 'd') && \
 		conversion_buffer->current_length > 0 && \
@@ -28,7 +28,7 @@ int	process_spaces(
 	if (specs->minimum_field_width > conversion_buffer->current_length)
 	{
 		i = specs->minimum_field_width - conversion_buffer->current_length;
-		if (DASH_IS_ON(specs->flags))
+		if (((specs->flags & (1 << 2)) != 0))
 		{
 			while (i--)
 				append_character_to_buffer(conversion_buffer, ' ');

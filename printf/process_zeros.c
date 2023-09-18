@@ -6,45 +6,45 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:38:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 15:17:54 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:45:20 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static int	count_number_of_digits(
+static int	count_ndigits(
 	t_conversion_specification *specs,
 	t_buffer *conversion_buffer,
-	int *number_of_digits
+	int *ndigits
 ){
 	int	i;
 
 	i = 0;
-	*number_of_digits = 0;
+	*ndigits = 0;
 	while (i < conversion_buffer->current_length)
 	{
 		if (
 			specs->conversion_specifier == 'x' || \
 			specs->conversion_specifier == 'X')
-			(*number_of_digits)++;
+			(*ndigits)++;
 		else if (ft_isdigit(conversion_buffer->content[i]))
-			(*number_of_digits)++;
+			(*ndigits)++;
 		i++;
 	}
 	return (SUCCESS);
 }
 
-static int	count_number_of_characters(
+static int	count_ncharacters(
 	t_buffer *conversion_buffer,
-	int *number_of_characters
+	int *ncharacters
 ){
 	int	i;
 
 	i = 0;
-	*number_of_characters = 0;
+	*ncharacters = 0;
 	while (i < conversion_buffer->current_length)
 	{
-		(*number_of_characters)++;
+		(*ncharacters)++;
 		i++;
 	}
 	return (SUCCESS);
@@ -67,8 +67,7 @@ static int	add_zeros_to_buffer(
 		return (ERROR);
 	i = 0;
 	j = 0;
-	if (
-		conversion_buffer->current_length > 0 && \
+	if (conversion_buffer->current_length > 0 && \
 		(conversion_buffer->content[i] == '-' || \
 			conversion_buffer->content[i] == '+'))
 		new_content[j++] = conversion_buffer->content[i++];
@@ -86,34 +85,28 @@ int	process_zeros(
 	t_conversion_specification *specs,
 	t_buffer *conversion_buffer
 ){
-	int	number_of_digits;
-	int	number_of_characters;
+	int	n;
 
-	if (
-		specs->conversion_specifier == 'c' || \
+	if (specs->conversion_specifier == 'c' || \
 		specs->conversion_specifier == 's' || \
-		specs->conversion_specifier == 'p'
-	)
+		specs->conversion_specifier == 'p')
 		return (SUCCESS);
 	if (specs->precision >= 0)
 	{
-		if (count_number_of_digits(
-				specs, conversion_buffer, &number_of_digits) == ERROR)
+		if (count_ndigits(specs, conversion_buffer, &n) == ERROR)
 			return (ERROR);
-		if (add_zeros_to_buffer(
-				conversion_buffer,
-				specs->precision - number_of_digits) == ERROR)
+		if (add_zeros_to_buffer(conversion_buffer,
+				specs->precision - n) == ERROR)
 			return (ERROR);
 	}
-	else if (ZERO_IS_ON(specs->flags) && !DASH_IS_ON(specs->flags))
+	else if (((specs->flags & (1 << 1)) != 0) && \
+	!((specs->flags & (1 << 2)) != 0))
 	{
-		if (count_number_of_characters(
-				conversion_buffer,
-				&number_of_characters) == ERROR)
+		if (count_ncharacters(conversion_buffer, &n) == ERROR)
 			return (ERROR);
 		if (add_zeros_to_buffer(
 				conversion_buffer,
-				specs->minimum_field_width - number_of_characters) == ERROR)
+				specs->minimum_field_width - n) == ERROR)
 			return (ERROR);
 	}
 	return (SUCCESS);

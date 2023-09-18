@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:55:12 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 15:15:59 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:48:15 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	process_alternate_form(
 	t_conversion_specification *specs,
 	t_buffer *conversion_buffer
 ){
-	if (HASH_IS_ON(specs->flags))
+	if (((specs->flags & (1 << 0)) != 0))
 	{
 		if (
 			specs->conversion_specifier == 'x' && \

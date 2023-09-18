@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_signal.c                                   :+:      :+:    :+:   */
+/*   parse_conversion_specifier.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 14:24:33 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 18:50:37 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/09/18 18:54:19 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/09/18 19:47:55 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	process_signal(
-	t_conversion_specification *specs,
-	t_buffer *conversion_buffer
+int	parse_conversion_specifier(
+	const char *formatted_string,
+	int *i,
+	t_conversion_specification *specs
 ){
-	if (
-		specs->conversion_specifier != 'd' && \
-		specs->conversion_specifier != 'i')
-		return (SUCCESS);
-	if (
-		((specs->flags & (1 << 4)) != 0) && \
-		conversion_buffer->content[0] != '-')
-		prepend_character_to_buffer(conversion_buffer, '+');
+	char	current_character;
+
+	current_character = formatted_string[(*i)];
+	if (ft_strchr(CONVERSION_SPECIFIERS, current_character) == NULL)
+		return (ERROR);
+	else
+		specs->conversion_specifier = current_character;
 	return (SUCCESS);
 }

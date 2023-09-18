@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_conversion_specification_to_buffer.c           :+:      :+:    :+:   */
+/*   parse_precision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 23:13:47 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 18:49:22 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/09/18 18:54:45 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/09/18 18:57:04 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	add_conversion_specification_to_buffer(
-	t_buffer *buffer,
-	va_list *args,
+int	parse_precision(
+	const char *formatted_string,
+	int *i,
 	t_conversion_specification *specs
 ){
-	t_buffer	*conversion_buffer;
-
-	if (malloc_buffer(&conversion_buffer) == ERROR)
+	specs->precision = -1;
+	if (formatted_string[(*i)] == '.')
 	{
-		return (ERROR);
+		if (formatted_string[++(*i)] == '-')
+		{
+			while (ft_isdigit(formatted_string[++(*i)]))
+				;
+			specs->precision = -1;
+		}
+		else
+		{
+			specs->precision = 0;
+			while (ft_isdigit(formatted_string[(*i)]))
+			{
+				specs->precision *= 10;
+				specs->precision += (int)(formatted_string[(*i)] - '0');
+				(*i)++;
+			}
+		}
 	}
-	if (process_specs(args, specs, conversion_buffer) == ERROR)
-	{
-		free_buffer(conversion_buffer);
-		return (ERROR);
-	}
-	if (add_buffer_to_buffer(buffer, conversion_buffer) == ERROR)
-	{
-		return (ERROR);
-	}
-	free_buffer(conversion_buffer);
 	return (SUCCESS);
 }
