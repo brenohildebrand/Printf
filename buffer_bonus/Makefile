@@ -6,7 +6,7 @@
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 12:45:43 by bhildebr          #+#    #+#              #
-#    Updated: 2023/09/19 17:41:59 by bhildebr         ###   ########.fr        #
+#    Updated: 2023/09/19 17:18:42 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,33 +16,33 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SOURCES = \
-	add_buffer_to_buffer.c \
-	add_character_to_buffer.c \
-	add_cstring_to_buffer.c \
-	add_unsigned_character_to_buffer.c \
-	append_character_to_buffer.c \
-	append_cstring_to_buffer.c \
-	free_buffer.c \
-	malloc_buffer.c \
-	prepend_character_to_buffer.c \
-	print_buffer.c \
-	realloc_buffer_content.c
+	add_buffer_to_buffer_bonus.c \
+	add_character_to_buffer_bonus.c \
+	add_cstring_to_buffer_bonus.c \
+	add_unsigned_character_to_buffer_bonus.c \
+	append_character_to_buffer_bonus.c \
+	append_cstring_to_buffer_bonus.c \
+	free_buffer_bonus.c \
+	malloc_buffer_bonus.c \
+	prepend_character_to_buffer_bonus.c \
+	print_buffer_bonus.c \
+	realloc_buffer_content_bonus.c
 
 HEADERS = \
-	buffer.h
+	buffer_bonus.h
 
 OBJECTS = \
-	add_buffer_to_buffer.o \
-	add_character_to_buffer.o \
-	add_cstring_to_buffer.o \
-	add_unsigned_character_to_buffer.o \
-	append_character_to_buffer.o \
-	append_cstring_to_buffer.o \
-	free_buffer.o \
-	malloc_buffer.o \
-	prepend_character_to_buffer.o \
-	print_buffer.o \
-	realloc_buffer_content.o
+	add_buffer_to_buffer_bonus.o \
+	add_character_to_buffer_bonus.o \
+	add_cstring_to_buffer_bonus.o \
+	add_unsigned_character_to_buffer_bonus.o \
+	append_character_to_buffer_bonus.o \
+	append_cstring_to_buffer_bonus.o \
+	free_buffer_bonus.o \
+	malloc_buffer_bonus.o \
+	prepend_character_to_buffer_bonus.o \
+	print_buffer_bonus.o \
+	realloc_buffer_content_bonus.o
 
 all: $(NAME)
 

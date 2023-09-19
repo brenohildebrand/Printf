@@ -6,7 +6,7 @@
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 12:54:22 by bhildebr          #+#    #+#              #
-#    Updated: 2023/09/19 13:02:32 by bhildebr         ###   ########.fr        #
+#    Updated: 2023/09/19 17:21:24 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,46 +97,6 @@ OBJECTS = \
 	ft_toupper.o \
 	ft_unsigned_int_itoa_base.o \
 	ft_unsigned_long_long_int_itoa_base.o
-
-DEPENDS = \
-	ft_atoi.d \
-	ft_bzero.d \
-	ft_calloc.d \
-	ft_int_itoa_base.d \
-	ft_isalnum.d \
-	ft_isalpha.d \
-	ft_isascii.d \
-	ft_isdigit.d \
-	ft_isprint.d \
-	ft_itoa.d \
-	ft_long_long_int_itoa_base.d \
-	ft_memchr.d \
-	ft_memcmp.d \
-	ft_memcpy.d \
-	ft_memmove.d \
-	ft_memset.d \
-	ft_putchar_fd.d \
-	ft_putendl_fd.d \
-	ft_putnbr_fd.d \
-	ft_putstr_fd.d \
-	ft_split.d \
-	ft_strchr.d \
-	ft_strdup.d \
-	ft_striteri.d \
-	ft_strjoin.d \
-	ft_strlcat.d \
-	ft_strlcpy.d \
-	ft_strlen.d \
-	ft_strmapi.d \
-	ft_strncmp.d \
-	ft_strnstr.d \
-	ft_strchr.d \
-	ft_strtrim.d \
-	ft_substr.d \
-	ft_tolower.d \
-	ft_toupper.d \
-	ft_unsigned_int_itoa_base.d \
-	ft_unsigned_long_long_int_itoa_base.d
 
 all: $(NAME)
 
