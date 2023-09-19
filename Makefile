@@ -6,7 +6,7 @@
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/07 15:30:27 by bhildebr          #+#    #+#              #
-#    Updated: 2023/09/19 17:50:39 by bhildebr         ###   ########.fr        #
+#    Updated: 2023/09/19 19:12:05 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -292,4 +292,4 @@ re_bonus: fclean_bonus bonus
 	buffer buffer_bonus \
 	libft libft_bonus \
 	printf printf_bonus \
-	libs libs_bonus
+	libs libs_bonus \
