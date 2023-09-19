@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 02:50:16 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/16 12:38:39 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 21:55:14 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	convert_upper_x(
 	va_list *args,
-	t_buffer *conversion_buffer,
-	t_conversion_specification *specs
+	t_buffer *conversion_buffer
 ){
 	unsigned int	arg;
 	char			*cstring;

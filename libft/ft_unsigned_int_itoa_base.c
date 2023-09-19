@@ -6,12 +6,11 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 00:08:08 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 15:08:30 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:28:39 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	*handle_zero(char *base)
 {
@@ -27,7 +26,6 @@ static char	*handle_zero(char *base)
 
 static size_t	get_string_len(unsigned int value, char *base)
 {
-	unsigned int	_value;
 	size_t			base_len;
 	size_t			string_len;
 
@@ -47,7 +45,6 @@ static char	*get_string(
 	char *string,
 	size_t string_len
 ){
-	unsigned int	_value;
 	size_t			base_len;
 
 	base_len = ft_strlen(base);
@@ -62,7 +59,6 @@ static char	*get_string(
 
 char	*ft_unsigned_int_itoa_base(unsigned int value, char *base)
 {
-	unsigned int	_value;
 	size_t			string_len;
 	char			*string;
 

@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:51:17 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 19:48:29 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:29:42 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-
-# include <stdio.h> 
 
 # define DEC_BASE "0123456789"
 # define HEX_BASE "0123456789ABCDEF"
@@ -46,28 +44,22 @@ int	add_conversion_specification_to_buffer(
 		);
 int	convert_c(
 		va_list	*args,
-		t_buffer *conversion_buffer,
-		t_conversion_specification *specs
+		t_buffer *conversion_buffer
 		);
 int	convert_d(
 		va_list *args,
-		t_buffer *conversion_buffer,
-		t_conversion_specification *specs
+		t_buffer *conversion_buffer
 		);
 int	convert_i(
 		va_list *args,
-		t_buffer *conversion_buffer,
-		t_conversion_specification *specs
+		t_buffer *conversion_buffer
 		);
 int	convert_p(
 		va_list *args,
-		t_buffer *conversion_buffer,
-		t_conversion_specification *specs
+		t_buffer *conversion_buffer
 		);
 int	convert_percentage(
-		va_list	*args,
-		t_buffer *conversion_buffer,
-		t_conversion_specification *specs
+		t_buffer *conversion_buffer
 		);
 int	convert_s(
 		va_list *args,
@@ -76,18 +68,15 @@ int	convert_s(
 		);
 int	convert_u(
 		va_list *args,
-		t_buffer *conversion_buffer,
-		t_conversion_specification *specs
+		t_buffer *conversion_buffer
 		);
 int	convert_upper_x(
 		va_list *args,
-		t_buffer *conversion_buffer,
-		t_conversion_specification *specs
+		t_buffer *conversion_buffer
 		);
 int	convert_x(
 		va_list *args,
-		t_buffer *conversion_buffer,
-		t_conversion_specification *specs
+		t_buffer *conversion_buffer
 		);
 int	parse_conversion_specification(
 		const char *formatted_string,

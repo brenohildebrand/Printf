@@ -6,12 +6,11 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 00:08:08 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 15:08:04 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:27:56 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	*handle_zero(char *base)
 {
@@ -85,7 +84,6 @@ static char	*get_string(
 
 char	*ft_long_long_int_itoa_base(long long int value, char *base)
 {
-	long long int	_value;
 	size_t			string_len;
 	char			*string;
 

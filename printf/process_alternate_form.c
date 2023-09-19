@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:55:12 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 18:48:15 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 21:58:07 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_non_zero(t_buffer *conversion_buffer)
 {
-	int	i;
+	long unsigned int	i;
 
 	i = 0;
 	while (i < conversion_buffer->current_length)

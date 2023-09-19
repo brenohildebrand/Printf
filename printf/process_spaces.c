@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:39:04 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 18:38:47 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 22:01:01 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	process_spaces(
 		conversion_buffer->current_length > 0 && \
 		conversion_buffer->content[0] != '-')
 		prepend_character_to_buffer(conversion_buffer, ' ');
-	if (specs->minimum_field_width > conversion_buffer->current_length)
+	if ((long unsigned int)specs->minimum_field_width > \
+	conversion_buffer->current_length)
 	{
 		i = specs->minimum_field_width - conversion_buffer->current_length;
 		if (((specs->flags & (1 << 2)) != 0))

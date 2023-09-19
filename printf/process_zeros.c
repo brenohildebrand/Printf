@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:38:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 19:45:20 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 22:03:06 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	count_ndigits(
 	t_buffer *conversion_buffer,
 	int *ndigits
 ){
-	int	i;
+	long unsigned int	i;
 
 	i = 0;
 	*ndigits = 0;
@@ -38,7 +38,7 @@ static int	count_ncharacters(
 	t_buffer *conversion_buffer,
 	int *ncharacters
 ){
-	int	i;
+	long unsigned int	i;
 
 	i = 0;
 	*ncharacters = 0;
@@ -54,10 +54,10 @@ static int	add_zeros_to_buffer(
 	t_buffer *conversion_buffer,
 	int number_of_zeros
 ){
-	int		i;
-	int		j;
-	char	*new_content;
-	int		new_length;
+	long unsigned int		i;
+	int						j;
+	char					*new_content;
+	int						new_length;
 
 	if (number_of_zeros <= 0)
 		return (SUCCESS);

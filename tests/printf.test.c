@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:21:02 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/09/18 16:28:17 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/09/18 22:05:41 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	main(void)
 
 	printf("[PRINTF] ");
 	fflush(stdout);
-	printf_return = printf("%.-5i", 3);
+	printf_return = printf("%.5i", 3);
 	printf("\n");
 	printf("[PRINTF] %i\n", printf_return);
 	printf("[FT_PRINTF] ");
 	fflush(stdout);
-	ft_printf_return = ft_printf("%.-5i", 3); 
+	ft_printf_return = ft_printf("%.5i", 3); 
 	printf("\n");
 	printf("[FT_PRINTF] %i\n", ft_printf_return);
 	return (0);
