@@ -6,7 +6,7 @@
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/07 15:30:27 by bhildebr          #+#    #+#              #
-#    Updated: 2023/09/19 19:12:05 by bhildebr         ###   ########.fr        #
+#    Updated: 2023/09/20 14:35:17 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,18 @@ NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-BUFFERDIR = buffer
-LIBFTDIR = libft
-PRINTFDIR = printf
+BUFFER_DIR = buffer
+LIBFT_DIR = libft
+PRINTF_DIR = printf
 
-LIBBUFFER = $(BUFFERDIR)/libbuffer.a
-LIBFT = $(LIBFTDIR)/libft.a
-LIBPRINTF = $(PRINTFDIR)/libprintf.a
+LIBBUFFER = $(BUFFER_DIR)/libbuffer.a
+LIBFT = $(LIBFT_DIR)/libft.a
+LIBPRINTF = $(PRINTF_DIR)/libprintf.a
+
+HEADERS = \
+	buffer.h \
+	libft.h \
+	printf.h
 
 OBJECTS = \
 	buffer/add_buffer_to_buffer.o \
@@ -99,68 +104,6 @@ OBJECTS = \
 	printf/process_specs.o \
 	printf/process_zeros.o
 
-all: norm libs $(NAME)
-
-$(NAME): $(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS)
-
-norm:
-	@printf '[NORM]\n'
-	@norminette
-	@printf '\n'
-
-libs: buffer libft printf
-
-buffer:
-	@printf '[BUFFER]\n'
-	$(MAKE) all -C $(BUFFERDIR)
-
-libft:
-	@printf '\n[LIBFT]\n'
-	$(MAKE) all -C $(LIBFTDIR)
-	
-printf:
-	@printf '\n[PRINTF]\n'
-	$(MAKE) all -C $(PRINTFDIR)
-	@printf '\n'
-
-clean: clean_bonus
-	@printf '[BUFFER]\n'
-	$(MAKE) clean -C $(BUFFERDIR)
-	@printf '\n[LIBFT]\n'
-	$(MAKE) clean -C $(LIBFTDIR)
-	@printf '\n[PRINTF]\n'
-	$(MAKE) clean -C $(PRINTFDIR)
-	@printf '\n'
-
-fclean: fclean_bonus
-	@printf '[BUFFER]\n'
-	$(MAKE) fclean -C $(BUFFERDIR)
-	@printf '\n[LIBFT]\n'
-	$(MAKE) fclean -C $(LIBFTDIR)
-	@printf '\n[PRINTF]\n'
-	$(MAKE) fclean -C $(PRINTFDIR)
-	@printf '\n'
-	rm -f $(NAME)
-
-re: fclean all
-
-test: all
-	@$(CC) $(CFLAGS) ./tests/printf.test.c -o test -L. -l:libftprintf.a
-	@./test
-	@rm -f ./test
-
-# BONUS
-NAME_BONUS = libftprintf.a
-
-BUFFERDIR_BONUS = buffer_bonus
-LIBFTDIR_BONUS = libft_bonus
-PRINTFDIR_BONUS = printf_bonus
-
-LIBBUFFER_BONUS = $(BUFFERDIR_BONUS)/libbuffer.a
-LIBFT_BONUS = $(LIBFTDIR_BONUS)/libft.a
-LIBPRINTF_BONUS = $(PRINTFDIR_BONUS)/libprintf.a
-
 OBJECTS_BONUS = \
 	buffer_bonus/add_buffer_to_buffer_bonus.o \
 	buffer_bonus/add_character_to_buffer_bonus.o \
@@ -237,59 +180,31 @@ OBJECTS_BONUS = \
 	printf_bonus/process_specs_bonus.o \
 	printf_bonus/process_zeros_bonus.o
 
-bonus: norm_bonus libs_bonus $(NAME_BONUS)
+all: $(NAME)
 
-$(NAME_BONUS): $(OBJECTS_BONUS)
-	ar rcs $(NAME_BONUS) $(OBJECTS_BONUS)
+$(NAME): $(OBJECTS)
 
-norm_bonus:
+bonus: $(OBJECTS_BONUS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+	ar rcs $(NAME) $@
+
+norm:
 	@printf '[NORM]\n'
-	@norminette
+	@norminette -R CheckForbiddenSourceHeader
 	@printf '\n'
 
-libs_bonus: buffer_bonus libft_bonus printf_bonus
+clean:
+	rm -f $(OBJECTS) $(OBJECTS_BONUS)
 
-buffer_bonus:
-	@printf '[BUFFER]\n'
-	$(MAKE) all -C $(BUFFERDIR_BONUS)
+fclean: clean
+	rm -f $(NAME)
 
-libft_bonus:
-	@printf '\n[LIBFT]\n'
-	$(MAKE) all -C $(LIBFTDIR_BONUS)
-	
-printf_bonus:
-	@printf '\n[PRINTF]\n'
-	$(MAKE) all -C $(PRINTFDIR_BONUS)
-	@printf '\n'
+re: fclean all
 
-clean_bonus:
-	@printf '[BUFFER]\n'
-	$(MAKE) clean -C $(BUFFERDIR_BONUS)
-	@printf '\n[LIBFT]\n'
-	$(MAKE) clean -C $(LIBFTDIR_BONUS)
-	@printf '\n[PRINTF]\n'
-	$(MAKE) clean -C $(PRINTFDIR_BONUS)
-	@printf '\n'
-
-fclean_bonus:
-	@printf '[BUFFER]\n'
-	$(MAKE) fclean -C $(BUFFERDIR_BONUS)
-	@printf '\n[LIBFT]\n'
-	$(MAKE) fclean -C $(LIBFTDIR_BONUS)
-	@printf '\n[PRINTF]\n'
-	$(MAKE) fclean -C $(PRINTFDIR_BONUS)
-	@printf '\n'
-	rm -f $(NAME_BONUS)
-
-re_bonus: fclean_bonus bonus
-
-.PHONY: \
-	all bonus \
-	clean clean_bonus \
-	fclean fclean_bonus \
-	re re_bonus \
-	test \
-	buffer buffer_bonus \
-	libft libft_bonus \
-	printf printf_bonus \
-	libs libs_bonus \
+test: $(NAME)
+	@$(CC) $(CFLAGS) ./tests/printf.test.c -o test -L. -l:libftprintf.a
+	@printf '[TEST]\n'
+	@./test
+	@rm -f ./test
