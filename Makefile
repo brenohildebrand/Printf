@@ -6,7 +6,7 @@
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/07 15:30:27 by bhildebr          #+#    #+#              #
-#    Updated: 2023/09/20 14:35:17 by bhildebr         ###   ########.fr        #
+#    Updated: 2023/09/20 14:41:27 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -202,9 +202,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-test: $(NAME)
-	@$(CC) $(CFLAGS) ./tests/printf.test.c -o test -L. -l:libftprintf.a
-	@printf '[TEST]\n'
-	@./test
-	@rm -f ./test
